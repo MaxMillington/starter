@@ -8,9 +8,9 @@ import {
   Route,
 } from 'react-router-dom'
 import './index.css'
-import App from './App'
 import registerServiceWorker from './registerServiceWorker'
 import reducers from './app/reducers'
+import ConnectedHome from './app/home/containers/ConnectedHome'
 
 import './app/bundle.scss'
 
@@ -20,7 +20,7 @@ const store = createStoreWithMiddleware(reducers)
 ReactDOM.render(
   <Provider store={store}>
     <Router onUpdate={() => { window.scrollTo(0, 0) }}>
-      <Route path="/" component={App}>
+      <Route path="/" component={ConnectedHome}>
       </Route>
     </Router>
   </Provider>
