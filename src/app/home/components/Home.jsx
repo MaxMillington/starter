@@ -1,13 +1,18 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import logo from '../../../logo.svg'
 
 export class Home extends Component {
   state = {}
 
   componentDidMount() {
+    const data = this.props.getInstagramFeed()
+    console.log('data', data)
+    this.setState({ data })
   }
 
   render() {
+    console.log('yo my state', this.state.data)
     return(
       <div className="home">
         <header className="home-header">
@@ -21,6 +26,12 @@ export class Home extends Component {
       </div>
     )
   }
+}
+
+Home.propTypes = {
+  name: PropTypes.string,
+  data: PropTypes.object,
+  getInstagramFeed: PropTypes.func.isRequired
 }
 
 export default Home

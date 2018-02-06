@@ -25,15 +25,13 @@ export const getInstagramError = (bool) => {
   }
 }
 
-export const getInstagramFeed = (numbersCalled) => {
+export const getInstagramFeed = () => {
   return (dispatch) => {
-    dispatch(getInstagram(true));
-    const clientId = '185c752d900a4cfd8d8f91cf4d02f6f4'
-    const redirectUri = 'http://localhost:3000'
+    dispatch(getInstagram(true))
+    const accessToken = '581228915.185c752.68f181cbdea3479c97ed8186f983cca0'
+    const uri  = `https://api.instagram.com/v1/users/search?q=lakelouiserd&access_token=${accessToken}`
 
-    const url = `https://www.instagram.com/oauth/authorize/?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=token&scope=public_content`
-
-    axios.get(url)
+    axios.get(uri)
       .then(res => {
         dispatch(getInstagramSuccess(res.data))
       })

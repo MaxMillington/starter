@@ -6,6 +6,7 @@ import Home from '../components/Home'
 import { getInstagramFeed } from '../actions'
 
 const mapStateToProps = (state) => ({
+  data: state.data,
   name: 'Max'
 })
 
