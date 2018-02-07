@@ -32,7 +32,6 @@ if (process.env.NODE_ENV !== 'production') {
   middleware.push(logger)
 }
 
-// const createStoreWithMiddleware = applyMiddleware(thunk)(createStore)
 const store = createStore(reducers, applyMiddleware(...middleware))
 
 ReactDOM.render(

@@ -16,7 +16,6 @@ export class Home extends Component {
   }
 
   render() {
-    console.log('state', this.state)
     return(
       <div className="home">
         <header className="home-header">

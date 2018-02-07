@@ -6,7 +6,6 @@ import Home from '../components/Home'
 import { getInstagramFeed } from '../actions'
 
 const mapStateToProps = (state) => {
-  console.log('mapping', state)
   return ({
     data: state.home.data,
     loading: state.home.loading,
@@ -15,14 +14,6 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({ getInstagramFeed }, dispatch)
-
-export const ConnectedHome = (props) => {
-  console.log('yo my props', props)
-  return (
-    <Home {...props}/>
-  )
-}
-
 
 export default connect(
   mapStateToProps,
