@@ -3,16 +3,20 @@ import PropTypes from 'prop-types'
 import logo from '../../../logo.svg'
 
 export class Home extends Component {
-  state = {}
+  state = { data: {} }
 
   componentDidMount() {
-    const data = this.props.getInstagramFeed()
-    console.log('data', data)
-    this.setState({ data })
+    this.props.getInstagramFeed()
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.data) {
+      this.setState({data: nextProps.data})
+    }
   }
 
   render() {
-    console.log('yo my state', this.state.data)
+    console.log('state', this.state)
     return(
       <div className="home">
         <header className="home-header">

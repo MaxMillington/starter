@@ -1,15 +1,15 @@
 import { GET_INSTAGRAM, GET_INSTAGRAM_ERROR, GET_INSTAGRAM_SUCCESS} from './actions'
 
 const initialState = {
-
+  data: {},
+  loading: false
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case GET_INSTAGRAM:
       return Object.assign({}, state, {
-        loading: true,
-        data: action.data
+        loading: true
       })
     case GET_INSTAGRAM_SUCCESS:
       return Object.assign({}, state, {

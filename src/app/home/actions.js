@@ -33,6 +33,7 @@ export const getInstagramFeed = () => {
 
     axios.get(uri)
       .then(res => {
+        console.log('gottet', res)
         dispatch(getInstagramSuccess(res.data))
       })
       .catch(err => {

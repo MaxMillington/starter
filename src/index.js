@@ -14,8 +14,26 @@ import ConnectedHome from './app/home/containers/ConnectedHome'
 
 import './app/bundle.scss'
 
-const createStoreWithMiddleware = applyMiddleware(thunk)(createStore)
-const store = createStoreWithMiddleware(reducers)
+let middleware = [thunk]
+
+if (process.env.NODE_ENV !== 'production') {
+  const { createLogger } = require('redux-logger')
+
+  const logger = createLogger({
+
+    collapsed: true,
+
+    titleFormatter: (action, time, took) => (
+      `action ${action.metaType || action.type} (in ${took.toFixed(2)} ms)`
+    )
+
+  })
+
+  middleware.push(logger)
+}
+
+// const createStoreWithMiddleware = applyMiddleware(thunk)(createStore)
+const store = createStore(reducers, applyMiddleware(...middleware))
 
 ReactDOM.render(
   <Provider store={store}>
